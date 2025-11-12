@@ -42,3 +42,14 @@ seats int
 ## show columns from <table_name> - Lists all columns in the specified table along with their data types and attributes
 
 ## drop table <table_name> - Deletes the specified table and all its data
+
+## insert into <table_name> (column1, column2, ...) values (value1, value2, ...); - Inserts a new row into the specified table with the provided values for each column
+
+## Not Null Constraint - Ensures that a column cannot have a NULL value
+
+```sql
+create table bus (
+numberplate varchar(30) not null,
+seats int not null
+);
+```
