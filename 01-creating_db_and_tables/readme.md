@@ -42,3 +42,38 @@ seats int
 ## show columns from <table_name> - Lists all columns in the specified table along with their data types and attributes
 
 ## drop table <table_name> - Deletes the specified table and all its data
+
+## Altering Tables
+
+### Adding a Column
+
+```sql
+alter table bus 
+add column driver varchar(50);
+```
+
+### Modifying a Column
+
+```sql
+alter table bus modify column seats int not null default 40;
+```
+
+### Dropping a Column
+
+```sql
+alter table bus 
+drop column driver;
+```
+
+### Renaming a Table
+
+```sql
+Rename table bus to buses;
+```
+
+### Alter Table Constraints
+
+```sql
+alter table bus
+add constraint pk_numberplate primary key (numberplate);
+```
