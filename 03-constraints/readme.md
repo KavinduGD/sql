@@ -1,6 +1,6 @@
 # Constraints
 
-## Primary Key Constraint
+## 1. Primary Key Constraint
 
 - Uniquely identifies each record in a table
 - Ensures that the column(s) defined as the primary key cannot contain NULL values and must be unique across all records
@@ -36,7 +36,7 @@ create table employees(
 );
 ```
 
-## Not Null Constraint - Ensures that a column cannot have a NULL value
+## 2. Not Null Constraint - Ensures that a column cannot have a NULL value
 
 ```sql
 create table bus (
@@ -45,7 +45,7 @@ seats int not null
 );
 ```
 
-## Defult Value - Specifies a default value for a column when no value is provided during insertion
+## 3. Default Value - Specifies a default value for a column when no value is provided during insertion
 
 ```sql
 create table bus (
@@ -67,3 +67,38 @@ seats int default 40
 ```
 
 - In this example, the seats column can be NULL, but if no value is provided during insertion, it will default to 40.
+
+## 4. Unique Constraint - Ensures that all values in a column are unique across the table
+
+```sql
+create table bus (
+numberplate varchar(30) not null unique,
+seats int not null default 40
+);
+```
+
+## 5. Check Constraint - Ensures that the values in a column meet a specific condition
+
+```sql
+create table bus (
+numberplate varchar(30) not null unique,
+seats int not null default 40 check (seats > 0)
+);
+
+-- another way to write check constraint
+create table bus (
+numberplate varchar(30) not null unique,
+seats int not null default 40,
+Constraint check_seats check (seats > 0)
+);
+```
+
+## 6. Multiple Column Constraints - Constraints can be applied to multiple columns in a table
+
+```sql
+create table bus (
+numberplate varchar(30) not null,
+seats int not null default 40,
+Constraint pk_bus unique (numberplate, seats)
+);
+```
