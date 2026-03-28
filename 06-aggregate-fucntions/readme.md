@@ -59,7 +59,7 @@ FROM books
 GROUP BY author;
 ```
 
-# Subqueries
+## Subqueries
 
 - Subqueries are queries nested inside another query. They can be used to perform calculations that depend on the results of another query.
 
@@ -69,4 +69,16 @@ from books
 where released_year=(select min(released_year)
                     from books);
 -- This query will return the title and released year of the book(s) that were released in the earliest year.
+```
+
+## Having
+
+- The `HAVING` clause is used to filter groups based on a condition. It is similar to the `WHERE` clause, but it is used for groups rather than individual rows.
+
+```sql
+SELECT department, COUNT(*) as employee_count
+FROM employees
+GROUP BY department
+HAVING employee_count > 10;
+-- This query will return the departments that have more than 10 employees.
 ```
