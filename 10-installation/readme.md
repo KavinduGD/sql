@@ -24,11 +24,25 @@ sudo mysql_secure_installation
 sudo mysql
 ```
 
-- Create a new database user
+- 1. alter a new root user that can connect from localhost
 
 ```sql
 ALTER USER 'root'@'localhost'
 IDENTIFIED WITH caching_sha2_password BY 'RootPassword123!';
+FLUSH PRIVILEGES;
+```
+
+- 2. create a new root user that can connect from any host
+
+```sql
+CREATE USER 'root'@'%'
+IDENTIFIED WITH caching_sha2_password BY 'RootPassword123!';
+
+GRANT ALL PRIVILEGES
+ON *.*
+TO 'root'@'%'
+WITH GRANT OPTION;
+
 FLUSH PRIVILEGES;
 ```
 
